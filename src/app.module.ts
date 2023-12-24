@@ -1,13 +1,15 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
+
 import { AppointmentsModule } from './appointments/appointments.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PatientsModule } from './patients/patients.module';
 import { MedicalRecordsModule } from './medical-records/medical-records.module';
 import { AuthModule } from './auth/auth.module';
-
+import { UserModule } from './user/user.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -23,13 +25,14 @@ import { AuthModule } from './auth/auth.module';
       database: process.env.DB_NAME,
       autoLoadEntities: true,
       entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: false,
+      synchronize: true,
       debug: false,
     }),
     PatientsModule,
     AppointmentsModule,
     MedicalRecordsModule,
     AuthModule,
+    UserModule,
   
   ],
   controllers: [AppController],

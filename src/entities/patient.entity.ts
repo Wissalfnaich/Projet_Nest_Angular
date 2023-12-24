@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn , ManyToMany,JoinTable } from 'typeorm';
 import { Appointment } from '../entities/Appointment.entity';
 import { MedicalRecord } from '../entities/medical-record.entity';
-
+import { User } from './user.entity';
 @Entity()
 export class Patient {
   @PrimaryGeneratedColumn()
@@ -25,4 +25,7 @@ export class Patient {
   @OneToOne(() => MedicalRecord, (medicalRecord) => medicalRecord.patient)
   @JoinColumn()
   medicalRecord: MedicalRecord;
+  @ManyToMany(() => User, (user) => user.patients)
+  @JoinTable()
+  users: User[];
 }

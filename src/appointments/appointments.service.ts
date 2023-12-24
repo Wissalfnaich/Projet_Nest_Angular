@@ -10,20 +10,20 @@ import { UpdateAppointmentDto } from '../dto/update-appointment.dto';
 export class AppointmentsService {
   constructor(
     @InjectRepository(Appointment)
-    private readonly appointmentsRepository: Repository<Appointment>,
+    private readonly appointmentRepository: Repository<Appointment>,
   ) {}
 
   create(createAppointmentDto: CreateAppointmentDto): Promise<Appointment> {
-    const appointment = this.appointmentsRepository.create(createAppointmentDto);
-    return this.appointmentsRepository.save(appointment);
+    const appointment = this.appointmentRepository.create(createAppointmentDto);
+    return this.appointmentRepository.save(appointment);
   }
 
   findAll(): Promise<Appointment[]> {
-    return this.appointmentsRepository.find();
+    return this.appointmentRepository.find();
   }
 
   async findOne(id: number): Promise<Appointment> {
-    const appointment = await this.appointmentsRepository.findOneBy({ id });
+    const appointment = await this.appointmentRepository.findOneBy({ id });
     if (!appointment) {
       throw new NotFoundException(`Appointment with ID "${id}" not found`);
     }
@@ -32,11 +32,11 @@ export class AppointmentsService {
 
   async update(id: number, updateAppointmentDto: UpdateAppointmentDto): Promise<Appointment> {
     const appointment = await this.findOne(id);
-    return this.appointmentsRepository.save({ ...appointment, ...updateAppointmentDto });
+    return this.appointmentRepository.save({ ...appointment, ...updateAppointmentDto });
   }
 
   async remove(id: number): Promise<void> {
     await this.findOne(id);
-    await this.appointmentsRepository.delete(id);
+    await this.appointmentRepository.delete(id);
   }
 }
