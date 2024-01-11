@@ -5,14 +5,13 @@ export class UpdatePatientDto {
   @IsOptional()
   @IsString()
   readonly name?: string;
+  
 
+  
   @IsOptional()
   @IsString()
   readonly lastname?: string;
 
-  @IsOptional()
-  @IsNumber()
-  readonly phone?: number;
 
   @IsOptional()
   @IsString()

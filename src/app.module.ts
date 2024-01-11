@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import { AppointmentsModule } from './appointments/appointments.module';
+import { AppointmentsModule } from './appointment/appointment.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PatientsModule } from './patients/patients.module';
 import { MedicalRecordsModule } from './medical-records/medical-records.module';

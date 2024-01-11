@@ -2,7 +2,7 @@
 // user.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column , OneToMany, OneToOne, JoinColumn, ManyToMany} from 'typeorm';
 import { Role } from "../enums/role.enum";
-import { Appointment } from './appointment.entity';
+import { Appointment } from './Appointment.entity';
 import { Patient } from './patient.entity';
 import { MedicalRecord } from './medical-record.entity';
 @Entity()
@@ -15,7 +15,8 @@ export class User {
 
     @Column({ unique: true })
     email: string;
-
+    @Column()
+    phone: number;
     @Column()
     password: string;
 

@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn , ManyToMany,JoinTable } from 'typeorm';
-import { Appointment } from '../entities/Appointment.entity';
+import { Appointment } from './Appointment.entity';
 import { MedicalRecord } from '../entities/medical-record.entity';
 import { User } from './user.entity';
 @Entity()
@@ -12,14 +12,16 @@ export class Patient {
   name: string;
   @Column()
   lastname: string;
-  @Column()
-  phone: number;
+ 
   @Column()
   Babyname: string;
   @Column()
   Babyage: number;
   @Column()
   Babypoid: number;
+  
+  @Column()
+  Reason: string;
   @OneToMany(() => Appointment, (appointment) => appointment.patient)
   appointments: Appointment[];
   @OneToOne(() => MedicalRecord, (medicalRecord) => medicalRecord.patient)

@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
-import { AppointmentsService } from './appointments.service';
+import { AppointmentsService } from './appointment.service';
 import { CreateAppointmentDto } from '../dto/create-appointment.dto';
 import { UpdateAppointmentDto } from '../dto/update-appointment.dto';
 
-@Controller('appointments')
+@Controller('appointment')
 export class AppointmentsController {
   constructor(private readonly appointmentsService: AppointmentsService) {}
 

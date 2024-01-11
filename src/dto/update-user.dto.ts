@@ -11,7 +11,7 @@ export class UpdateUserDto {
     @IsString( {message: 'must be a string'})
     @Length(6, 15, {message: 'must be longer than or equal to 6 characters'})
     username: string;
-
+    
     @IsString()
     role: string;
 }
